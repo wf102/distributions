@@ -18,7 +18,7 @@ class NormalGen():
             
     # instance method to generate random numbers
     # prints out summary of numbers as default
-    def draw(self, size=1, printSummary=True):
+    def draw(self, size=1, printSummary=False):
 
         values = np.random.normal(loc=self.mu, scale=self.sd, size=size)
         
@@ -48,14 +48,14 @@ class PoissonGen():
     """
 
     def __init__(self, lam):
-        if not isinstance(lam,(int,float)): # or lam<0:
-            raise TypeError("lam must be an int or a float!") #,and >=0!")
+        if not isinstance(lam,(int,float)):
+            raise TypeError("lam must be an int or a float!")
 
         self.lam = lam
             
     # instance method to generate random numbers
     # prints out summary of numbers as default
-    def draw(self, size=1, printSummary=True):
+    def draw(self, size=1, printSummary=False):
 
         values = np.random.poisson(lam=self.lam, size=size)
         
@@ -86,16 +86,16 @@ class BinomialGen():
 
     def __init__(self, n, p):
         if not isinstance(n,int):
-            raise TypeError("n must be an int!") #, and >=0!")
-        if not isinstance(p,(int,float)): #) or p<0 or p>1:
-            raise TypeError("p must be an int or float!") #, and in the range [0,1]!")
+            raise TypeError("n must be an int!")
+        if not isinstance(p,(int,float)):
+            raise TypeError("p must be an int or float!")
 
         self.n = n
         self.p = p
             
     # instance method to generate random numbers
     # prints out summary of numbers as default
-    def draw(self, size=1, printSummary=True):
+    def draw(self, size=1, printSummary=False):
 
         values = np.random.binomial(n=self.n, p=self.p, size=size)
         
@@ -114,4 +114,3 @@ class BinomialGen():
               "\n  Min:     "+ str(min(values))+
               "\n  Mean:    "+ str(np.mean(values))+
               "\n  Std dev: "+ str(np.std(values)))
-

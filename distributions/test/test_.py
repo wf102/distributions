@@ -44,3 +44,13 @@ def test_binomial_check_attributes():
     b = BinomialGen(n=10, p=0.7)
     assert b.n == 10
     assert b.p == 0.7
+
+def test_poisson_gen_all_greater_than_or_equal_to_0():
+    b = PoissonGen(lam=10)
+    samp = b.draw(100)
+    assert min(samp) >= 0
+
+def test_binomial_gen_all_greater_than_or_equal_to_0():
+    b = BinomialGen(n=10, p = 0.7)
+    samp = b.draw(100)
+    assert min(samp) >= 0
